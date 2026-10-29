@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: citapro-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: citapro
+      POSTGRES_USER: citapro
+      POSTGRES_PASSWORD: change_me
+      TZ: America/Guatemala
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - citapro_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U citapro -d citapro"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  citapro_pg_data:
+    driver: local
