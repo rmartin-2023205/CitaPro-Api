@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
+@SuppressWarnings("null")
 public class AppointmentService {
 
     private static final Duration MIN_CANCEL_NOTICE = Duration.ofHours(2);

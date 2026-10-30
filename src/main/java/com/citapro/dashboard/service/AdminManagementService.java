@@ -1,7 +1,6 @@
 package com.citapro.dashboard.service;
 
 import com.citapro.appointments.dto.AppointmentResponseDto;
-import com.citapro.appointments.model.Appointment;
 import com.citapro.appointments.model.AppointmentStatus;
 import com.citapro.appointments.repository.AppointmentRepository;
 import com.citapro.availability.dto.AvailabilityBlockResponseDto;
@@ -31,6 +30,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Service
+@SuppressWarnings("null")
 public class AdminManagementService {
 
     private final BusinessRepository businessRepository;
@@ -204,3 +204,4 @@ public class AdminManagementService {
             .orElseThrow(() -> new ResourceNotFoundException("Negocio no configurado"));
     }
 }
+

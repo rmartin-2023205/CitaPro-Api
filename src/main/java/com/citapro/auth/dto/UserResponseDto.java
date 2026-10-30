@@ -1,7 +1,6 @@
 package com.citapro.auth.dto;
 
 import com.citapro.users.model.User;
-import com.citapro.users.model.UserRole;
 
 import java.util.Set;
 import java.util.UUID;

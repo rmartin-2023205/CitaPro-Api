@@ -2,7 +2,6 @@ package com.citapro.professionals.service;
 
 import com.citapro.appointments.dto.AppointmentResponseDto;
 import com.citapro.appointments.model.Appointment;
-import com.citapro.appointments.model.AppointmentStatus;
 import com.citapro.appointments.repository.AppointmentRepository;
 import com.citapro.business.model.Business;
 import com.citapro.common.exception.ResourceNotFoundException;
@@ -33,6 +32,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@SuppressWarnings("null")
 class ProfessionalAgendaServiceTest {
 
     @Mock
@@ -53,7 +53,7 @@ class ProfessionalAgendaServiceTest {
 
     @BeforeEach
     void setUp() {
-        mockBusiness = new Business("Barbería El Éxito", "America/Guatemala", "info@elexito.gt", "+502 2222-1111");
+        mockBusiness = new Business("Barbería El Éxito", "barberia-el-exito", "America/Guatemala", "+502 2222-1111", "info@elexito.gt", "Zona 10, Ciudad de Guatemala");
         mockBusiness.setId(UUID.randomUUID());
 
         mockUser = new User();
@@ -119,3 +119,4 @@ class ProfessionalAgendaServiceTest {
         assertEquals("Corte", agenda.get(0).serviceName());
     }
 }
+

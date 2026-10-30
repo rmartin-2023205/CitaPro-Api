@@ -12,3 +12,4 @@ public record CreateProfessionalRequestDto(
     UUID userId,
     Set<UUID> serviceIds
 ) {}
+

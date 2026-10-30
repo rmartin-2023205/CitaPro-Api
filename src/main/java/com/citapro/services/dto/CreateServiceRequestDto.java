@@ -19,3 +19,4 @@ public record CreateServiceRequestDto(
     @DecimalMin(value = "0.0", message = "El precio no puede ser negativo")
     BigDecimal price
 ) {}
+

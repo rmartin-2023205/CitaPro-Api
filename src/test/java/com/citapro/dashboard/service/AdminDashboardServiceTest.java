@@ -31,6 +31,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@SuppressWarnings("null")
 class AdminDashboardServiceTest {
 
     @Mock
@@ -55,7 +56,7 @@ class AdminDashboardServiceTest {
 
     @BeforeEach
     void setUp() {
-        mockBusiness = new Business("Barbería El Éxito", "America/Guatemala", "info@elexito.gt", "+502 2222-1111");
+        mockBusiness = new Business("Barbería El Éxito", "barberia-el-exito", "America/Guatemala", "+502 2222-1111", "info@elexito.gt", "Zona 10, Ciudad de Guatemala");
         mockBusiness.setId(UUID.randomUUID());
     }
 
@@ -96,3 +97,4 @@ class AdminDashboardServiceTest {
         assertEquals(1, summary.totalProfessionals());
     }
 }
+

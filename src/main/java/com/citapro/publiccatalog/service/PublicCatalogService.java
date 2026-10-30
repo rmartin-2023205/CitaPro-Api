@@ -18,6 +18,7 @@ import java.util.UUID;
 
 @Service
 @Transactional(readOnly = true)
+@SuppressWarnings("null")
 public class PublicCatalogService {
 
     private final BusinessRepository businessRepository;

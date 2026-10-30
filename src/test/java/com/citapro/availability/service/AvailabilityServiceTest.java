@@ -1,10 +1,8 @@
 package com.citapro.availability.service;
 
 import com.citapro.appointments.model.Appointment;
-import com.citapro.appointments.model.AppointmentStatus;
 import com.citapro.appointments.repository.AppointmentRepository;
 import com.citapro.availability.dto.AvailabilityResponseDto;
-import com.citapro.availability.dto.TimeSlotDto;
 import com.citapro.availability.model.AvailabilityBlock;
 import com.citapro.availability.model.BusinessHours;
 import com.citapro.availability.model.ProfessionalHours;
@@ -31,10 +29,10 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@SuppressWarnings("null")
 class AvailabilityServiceTest {
 
     @Mock

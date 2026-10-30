@@ -41,3 +41,4 @@ public class ProfessionalAgendaController {
         return ResponseEntity.ok(agendaService.getAgenda(authentication.getName(), from, to));
     }
 }
+

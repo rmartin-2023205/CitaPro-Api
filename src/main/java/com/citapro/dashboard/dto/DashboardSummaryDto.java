@@ -14,3 +14,4 @@ public record DashboardSummaryDto(
     long totalServices,
     long totalProfessionals
 ) {}
+
