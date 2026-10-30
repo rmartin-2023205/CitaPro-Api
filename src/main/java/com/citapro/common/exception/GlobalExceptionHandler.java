@@ -1,5 +1,6 @@
 package com.citapro.common.exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -27,11 +28,49 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return problem;
     }
 
+    @ExceptionHandler(ConflictException.class)
+    public ProblemDetail handleConflict(ConflictException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
+        problem.setTitle("Conflicto de horario o estado");
+        problem.setType(URI.create("https://citapro.com/errors/conflict"));
+        return problem;
+    }
+
+    @ExceptionHandler(ForbiddenException.class)
+    public ProblemDetail handleForbidden(ForbiddenException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.FORBIDDEN, ex.getMessage());
+        problem.setTitle("Acceso no autorizado");
+        problem.setType(URI.create("https://citapro.com/errors/forbidden"));
+        return problem;
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ProblemDetail handleIllegalArgument(IllegalArgumentException ex) {
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, ex.getMessage());
         problem.setTitle("Solicitud inválida");
         problem.setType(URI.create("https://citapro.com/errors/bad-request"));
+        return problem;
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ProblemDetail handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+        String msg = ex.getMessage();
+        if (msg != null && (msg.contains("no_overlapping_appointments") || msg.contains("exclusion constraint"))) {
+            ProblemDetail problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.CONFLICT,
+                "El horario seleccionado acaba de ser reservado por otro cliente. Por favor seleccione otro horario."
+            );
+            problem.setTitle("Colisión de cita simultánea");
+            problem.setType(URI.create("https://citapro.com/errors/concurrency-conflict"));
+            return problem;
+        }
+
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
+            HttpStatus.CONFLICT,
+            "Error de integridad en los datos: violación de restricción de base de datos."
+        );
+        problem.setTitle("Error de integridad");
+        problem.setType(URI.create("https://citapro.com/errors/integrity-violation"));
         return problem;
     }
 
@@ -66,4 +105,3 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return problem;
     }
 }
-
