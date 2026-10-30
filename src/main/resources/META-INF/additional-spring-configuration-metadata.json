@@ -1,0 +1,22 @@
+{
+  "properties": [
+    {
+      "name": "app.timezone",
+      "type": "java.lang.String",
+      "description": "Zona horaria por defecto del negocio.",
+      "defaultValue": "America/Guatemala"
+    },
+    {
+      "name": "app.cors.allowed-origins",
+      "type": "java.lang.String",
+      "description": "Orígenes permitidos por CORS separados por coma.",
+      "defaultValue": "http://localhost:3000"
+    },
+    {
+      "name": "app.auth.cookie-secure",
+      "type": "java.lang.Boolean",
+      "description": "Define si la cookie de sesión debe marcarse como Secure.",
+      "defaultValue": false
+    }
+  ]
+}
