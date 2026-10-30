@@ -20,5 +20,7 @@ public interface AvailabilityBlockRepository extends JpaRepository<AvailabilityB
         @Param("rangeStart") Instant rangeStart,
         @Param("rangeEnd") Instant rangeEnd
     );
+
+    List<AvailabilityBlock> findByBusinessIdOrderByStartAtDesc(UUID businessId);
 }
 

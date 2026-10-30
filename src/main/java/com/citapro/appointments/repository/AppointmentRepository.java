@@ -28,5 +28,18 @@ public interface AppointmentRepository extends JpaRepository<Appointment, UUID> 
     List<Appointment> findByProfessionalIdAndStartAtBetweenOrderByStartAtAsc(UUID professionalId, Instant from, Instant to);
 
     List<Appointment> findByBusinessIdAndStartAtBetweenOrderByStartAtAsc(UUID businessId, Instant from, Instant to);
+
+    @Query("SELECT a FROM Appointment a WHERE a.business.id = :businessId " +
+           "AND a.startAt >= :from AND a.startAt <= :to " +
+           "AND (:professionalId IS NULL OR a.professional.id = :professionalId) " +
+           "AND (:status IS NULL OR a.status = :status) " +
+           "ORDER BY a.startAt ASC")
+    List<Appointment> findAdminAppointments(
+        @Param("businessId") UUID businessId,
+        @Param("from") Instant from,
+        @Param("to") Instant to,
+        @Param("professionalId") UUID professionalId,
+        @Param("status") AppointmentStatus status
+    );
 }
 

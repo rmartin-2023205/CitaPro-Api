@@ -10,5 +10,6 @@ import java.util.UUID;
 @Repository
 public interface ServiceRepository extends JpaRepository<ServiceEntity, UUID> {
     List<ServiceEntity> findByBusinessIdAndActiveTrueOrderByNameAsc(UUID businessId);
+    List<ServiceEntity> findByBusinessIdOrderByNameAsc(UUID businessId);
 }
 

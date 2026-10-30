@@ -21,5 +21,9 @@ public interface ProfessionalRepository extends JpaRepository<Professional, UUID
 
     @Query("SELECT DISTINCT p FROM Professional p JOIN p.services s WHERE s.id = :serviceId AND p.active = true ORDER BY p.displayName ASC")
     List<Professional> findByServiceIdAndActiveTrue(@Param("serviceId") UUID serviceId);
+
+    List<Professional> findByBusinessIdOrderByDisplayNameAsc(UUID businessId);
+
+    Optional<Professional> findByUserIdAndActiveTrue(UUID userId);
 }
 
