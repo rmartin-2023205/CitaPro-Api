@@ -5,6 +5,7 @@ import com.citapro.professionals.model.Professional;
 import java.util.List;
 import java.util.UUID;
 
+@SuppressWarnings("null")
 public record ProfessionalResponseDto(
     UUID id,
     UUID businessId,

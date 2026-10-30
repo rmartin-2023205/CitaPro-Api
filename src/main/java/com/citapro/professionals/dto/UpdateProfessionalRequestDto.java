@@ -9,3 +9,4 @@ public record UpdateProfessionalRequestDto(
     Boolean active,
     Set<UUID> serviceIds
 ) {}
+

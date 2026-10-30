@@ -16,6 +16,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
+@SuppressWarnings("null")
 public class ProfessionalAgendaService {
 
     private final UserRepository userRepository;
@@ -59,3 +60,4 @@ public class ProfessionalAgendaService {
                 .toList();
     }
 }
+

@@ -1,9 +1,5 @@
 package com.citapro.dashboard.service;
 
-import com.citapro.appointments.dto.AppointmentResponseDto;
-import com.citapro.appointments.model.Appointment;
-import com.citapro.appointments.model.AppointmentStatus;
-import com.citapro.appointments.repository.AppointmentRepository;
 import com.citapro.availability.dto.AvailabilityBlockResponseDto;
 import com.citapro.availability.dto.CreateAvailabilityBlockDto;
 import com.citapro.availability.model.AvailabilityBlock;
@@ -11,7 +7,6 @@ import com.citapro.availability.repository.AvailabilityBlockRepository;
 import com.citapro.business.model.Business;
 import com.citapro.business.repository.BusinessRepository;
 import com.citapro.professionals.dto.CreateProfessionalRequestDto;
-import com.citapro.professionals.dto.UpdateProfessionalRequestDto;
 import com.citapro.professionals.model.Professional;
 import com.citapro.professionals.repository.ProfessionalRepository;
 import com.citapro.publiccatalog.dto.ProfessionalResponseDto;
@@ -40,6 +35,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
+@SuppressWarnings("null")
 class AdminManagementServiceTest {
 
     @Mock
@@ -55,9 +51,6 @@ class AdminManagementServiceTest {
     private AvailabilityBlockRepository blockRepository;
 
     @Mock
-    private AppointmentRepository appointmentRepository;
-
-    @Mock
     private UserRepository userRepository;
 
     @InjectMocks
@@ -67,7 +60,7 @@ class AdminManagementServiceTest {
 
     @BeforeEach
     void setUp() {
-        mockBusiness = new Business("Barbería El Éxito", "America/Guatemala", "info@elexito.gt", "+502 2222-1111");
+        mockBusiness = new Business("Barbería El Éxito", "barberia-el-exito", "America/Guatemala", "+502 2222-1111", "info@elexito.gt", "Zona 10, Ciudad de Guatemala");
         mockBusiness.setId(UUID.randomUUID());
     }
 
@@ -180,3 +173,4 @@ class AdminManagementServiceTest {
         assertThrows(IllegalArgumentException.class, () -> managementService.createBlock(dto, "admin@citapro.com"));
     }
 }
+

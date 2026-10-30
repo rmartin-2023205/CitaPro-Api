@@ -28,14 +28,19 @@ goto error
 
 :chkMHome
 set "BASE_DIR=%~dp0"
+if "%BASE_DIR:~-1%"=="\" set "BASE_DIR=%BASE_DIR:~0,-1%"
 if "%BASE_DIR%" == "" set "BASE_DIR=."
 
 set "MAVEN_PROJECTBASEDIR=%BASE_DIR%"
 set "WRAPPER_JAR=%BASE_DIR%\.mvn\wrapper\maven-wrapper.jar"
 
+if not exist "%WRAPPER_JAR%" (
+    powershell -Command "Invoke-WebRequest -Uri 'https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar' -OutFile '%WRAPPER_JAR%'"
+)
+
 set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 
-"%JAVACMD%" -Dmaven.multiModuleProjectDirectory="%MAVEN_PROJECTBASEDIR%" -jar "%WRAPPER_JAR%" %*
+"%JAVACMD%" -classpath "%WRAPPER_JAR%" "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" %WRAPPER_LAUNCHER% %*
 if ERRORLEVEL 1 goto error
 goto end
 
@@ -45,4 +50,3 @@ set ERROR_CODE=1
 :end
 @endlocal & set ERROR_CODE=%ERROR_CODE%
 exit /B %ERROR_CODE%
-

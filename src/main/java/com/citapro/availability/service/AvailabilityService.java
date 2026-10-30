@@ -26,6 +26,7 @@ import java.util.*;
 
 @Service
 @Transactional(readOnly = true)
+@SuppressWarnings("null")
 public class AvailabilityService {
 
     private static final int SLOT_STEP_MINUTES = 30;

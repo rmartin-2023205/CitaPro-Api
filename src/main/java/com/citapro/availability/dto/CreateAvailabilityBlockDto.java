@@ -15,3 +15,4 @@ public record CreateAvailabilityBlockDto(
 
     String reason
 ) {}
+

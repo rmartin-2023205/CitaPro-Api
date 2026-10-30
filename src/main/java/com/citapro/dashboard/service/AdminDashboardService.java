@@ -17,12 +17,12 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
+@SuppressWarnings("null")
 public class AdminDashboardService {
 
     private final BusinessRepository businessRepository;
@@ -100,3 +100,4 @@ public class AdminDashboardService {
         );
     }
 }
+

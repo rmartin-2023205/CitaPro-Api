@@ -9,3 +9,4 @@ public record UpdateServiceRequestDto(
     BigDecimal price,
     Boolean active
 ) {}
+
