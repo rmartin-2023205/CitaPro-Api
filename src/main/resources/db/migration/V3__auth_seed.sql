@@ -4,7 +4,7 @@
 -- 1. Administrador del negocio
 INSERT INTO users (id, business_id, full_name, email, phone, password_hash, active)
 VALUES (
-    'u0000000-0000-0000-0000-000000000001',
+    '40000000-0000-0000-0000-000000000001',
     'b0000000-0000-0000-0000-000000000001',
     'Administrador CitaPro',
     'admin@citapro.com',
@@ -15,15 +15,15 @@ VALUES (
 
 INSERT INTO user_roles (id, user_id, role)
 VALUES (
-    'r0000000-0000-0000-0000-000000000001',
-    'u0000000-0000-0000-0000-000000000001',
+    '50000000-0000-0000-0000-000000000001',
+    '40000000-0000-0000-0000-000000000001',
     'ROLE_ADMIN'
 ) ON CONFLICT (user_id, role) DO NOTHING;
 
 -- 2. Usuario Profesional - Carlos Gómez
 INSERT INTO users (id, business_id, full_name, email, phone, password_hash, active)
 VALUES (
-    'u0000000-0000-0000-0000-000000000002',
+    '40000000-0000-0000-0000-000000000002',
     'b0000000-0000-0000-0000-000000000001',
     'Carlos Gómez',
     'carlos@citapro.com',
@@ -34,20 +34,20 @@ VALUES (
 
 INSERT INTO user_roles (id, user_id, role)
 VALUES (
-    'r0000000-0000-0000-0000-000000000002',
-    'u0000000-0000-0000-0000-000000000002',
+    '50000000-0000-0000-0000-000000000002',
+    '40000000-0000-0000-0000-000000000002',
     'ROLE_PROFESSIONAL'
 ) ON CONFLICT (user_id, role) DO NOTHING;
 
 -- Vincular Carlos en tabla professionals
 UPDATE professionals
-SET user_id = 'u0000000-0000-0000-0000-000000000002'
-WHERE id = 'p0000000-0000-0000-0000-000000000001';
+SET user_id = '40000000-0000-0000-0000-000000000002'
+WHERE id = '20000000-0000-0000-0000-000000000001';
 
 -- 3. Usuario Profesional - Andrea Morales
 INSERT INTO users (id, business_id, full_name, email, phone, password_hash, active)
 VALUES (
-    'u0000000-0000-0000-0000-000000000003',
+    '40000000-0000-0000-0000-000000000003',
     'b0000000-0000-0000-0000-000000000001',
     'Andrea Morales',
     'andrea@citapro.com',
@@ -58,20 +58,20 @@ VALUES (
 
 INSERT INTO user_roles (id, user_id, role)
 VALUES (
-    'r0000000-0000-0000-0000-000000000003',
-    'u0000000-0000-0000-0000-000000000003',
+    '50000000-0000-0000-0000-000000000003',
+    '40000000-0000-0000-0000-000000000003',
     'ROLE_PROFESSIONAL'
 ) ON CONFLICT (user_id, role) DO NOTHING;
 
 -- Vincular Andrea en tabla professionals
 UPDATE professionals
-SET user_id = 'u0000000-0000-0000-0000-000000000003'
-WHERE id = 'p0000000-0000-0000-0000-000000000002';
+SET user_id = '40000000-0000-0000-0000-000000000003'
+WHERE id = '20000000-0000-0000-0000-000000000002';
 
 -- 4. Usuario Cliente demo
 INSERT INTO users (id, business_id, full_name, email, phone, password_hash, active)
 VALUES (
-    'u0000000-0000-0000-0000-000000000004',
+    '40000000-0000-0000-0000-000000000004',
     'b0000000-0000-0000-0000-000000000001',
     'Mario López',
     'cliente@citapro.com',
@@ -82,8 +82,7 @@ VALUES (
 
 INSERT INTO user_roles (id, user_id, role)
 VALUES (
-    'r0000000-0000-0000-0000-000000000004',
-    'u0000000-0000-0000-0000-000000000004',
+    '50000000-0000-0000-0000-000000000004',
+    '40000000-0000-0000-0000-000000000004',
     'ROLE_CLIENT'
 ) ON CONFLICT (user_id, role) DO NOTHING;
-
