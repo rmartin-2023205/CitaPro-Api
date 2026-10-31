@@ -19,6 +19,13 @@ goto checkJCmd
 :OkJHome
 set "JAVACMD=%JAVA_HOME%\bin\java.exe"
 
+if not exist "%JAVACMD%" (
+    if exist "%USERPROFILE%\.antigravity-ide\extensions\redhat.java-1.58.0-win32-x64\jre\25.0.4.1-win32-x86_64\bin\java.exe" (
+        set "JAVA_HOME=%USERPROFILE%\.antigravity-ide\extensions\redhat.java-1.58.0-win32-x64\jre\25.0.4.1-win32-x86_64"
+        set "JAVACMD=%USERPROFILE%\.antigravity-ide\extensions\redhat.java-1.58.0-win32-x64\jre\25.0.4.1-win32-x86_64\bin\java.exe"
+    )
+)
+
 :checkJCmd
 if exist "%JAVACMD%" goto chkMHome
 
